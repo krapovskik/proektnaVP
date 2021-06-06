@@ -1,0 +1,12 @@
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\bin\Debug\Kafule.exe.config
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\bin\Debug\Kafule.exe
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\bin\Debug\Kafule.pdb
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.Login.resources
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.Properties.Resources.resources
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.csproj.GenerateResource.cache
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.csproj.CoreCompileInputs.cache
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.exe
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.pdb
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.Main.resources
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.csproj.AssemblyReference.cache
+C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.FirstTimeAdminSave.resources
