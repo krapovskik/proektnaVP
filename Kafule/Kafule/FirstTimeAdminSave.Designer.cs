@@ -133,7 +133,7 @@ namespace Kafule
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
             this.Name = "FirstTimeAdminSave";
-            this.Text = "FirstTimeAdminSave";
+            this.Text = "Register";
             ((System.ComponentModel.ISupportInitialize)(this.passwordError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.confirmPasswordError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameError)).EndInit();
