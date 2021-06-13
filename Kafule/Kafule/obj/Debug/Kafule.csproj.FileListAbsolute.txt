@@ -10,3 +10,23 @@ C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.pdb
 C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.Main.resources
 C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.csproj.AssemblyReference.cache
 C:\Users\Kosta\Desktop\c# web\Kafule\Kafule\obj\Debug\Kafule.FirstTimeAdminSave.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\bin\Debug\Kafule.exe.config
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\bin\Debug\Kafule.exe
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\bin\Debug\Kafule.pdb
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.csproj.AssemblyReference.cache
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.FirstTimeAdminSave.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.Login.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.Main.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.Properties.Resources.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.csproj.GenerateResource.cache
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.csproj.CoreCompileInputs.cache
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.exe
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.pdb
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.AddNewWaiter.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.DeleteWaiter.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.ListWaiters.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.AddNewArticle.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.ViewDeleteArticle.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.AddNewTable.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.AddTableArticle.resources
+C:\Users\Kosta\Desktop\ProektnaVP\Kafule\Kafule\obj\Debug\Kafule.OrderForm.resources

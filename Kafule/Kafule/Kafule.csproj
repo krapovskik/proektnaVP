@@ -46,7 +46,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewArticle.Designer.cs">
+      <DependentUpon>AddNewArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewTable.Designer.cs">
+      <DependentUpon>AddNewTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewWaiter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewWaiter.Designer.cs">
+      <DependentUpon>AddNewWaiter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTableArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTableArticle.Designer.cs">
+      <DependentUpon>AddTableArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin.cs" />
+    <Compile Include="Article.cs" />
+    <Compile Include="ArticleItem.cs" />
+    <Compile Include="DeleteWaiter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteWaiter.Designer.cs">
+      <DependentUpon>DeleteWaiter.cs</DependentUpon>
+    </Compile>
     <Compile Include="FirstTimeAdminSave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +86,12 @@
       <DependentUpon>FirstTimeAdminSave.cs</DependentUpon>
     </Compile>
     <Compile Include="FirstTimeSave.cs" />
+    <Compile Include="ListWaiters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListWaiters.Designer.cs">
+      <DependentUpon>ListWaiters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,21 +104,57 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavedData.cs" />
+    <Compile Include="SavedDataArticle.cs" />
+    <Compile Include="SavedDataTables.cs" />
     <Compile Include="SaveSystem.cs" />
+    <Compile Include="Table.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="ViewDeleteArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDeleteArticle.Designer.cs">
+      <DependentUpon>ViewDeleteArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Waiter.cs" />
+    <EmbeddedResource Include="AddNewArticle.resx">
+      <DependentUpon>AddNewArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewTable.resx">
+      <DependentUpon>AddNewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewWaiter.resx">
+      <DependentUpon>AddNewWaiter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTableArticle.resx">
+      <DependentUpon>AddTableArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteWaiter.resx">
+      <DependentUpon>DeleteWaiter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FirstTimeAdminSave.resx">
       <DependentUpon>FirstTimeAdminSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListWaiters.resx">
+      <DependentUpon>ListWaiters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,6 +166,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewDeleteArticle.resx">
+      <DependentUpon>ViewDeleteArticle.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
