@@ -11,6 +11,11 @@ namespace Kafule
     {
         public Article article { get; set; }
         public int quantity { get; set; }
+        public bool ordered { get; set; }
 
+        public ArticleItem()
+        {
+            ordered = false;
+        }
     }
 }

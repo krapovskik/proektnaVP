@@ -38,20 +38,24 @@ namespace Kafule
             this.btnAllWaiters = new System.Windows.Forms.Button();
             this.btnAddNewArticle = new System.Windows.Forms.Button();
             this.dgvArticles = new System.Windows.Forms.DataGridView();
+            this.lblWaiterName = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnViewDelete = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAddTable = new System.Windows.Forms.Button();
+            this.lbTables = new System.Windows.Forms.ListBox();
+            this.btnDeleteTable = new System.Windows.Forms.Button();
+            this.btnAddArticle = new System.Windows.Forms.Button();
+            this.btnDailyReport = new System.Windows.Forms.Button();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Article = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTables = new System.Windows.Forms.DataGridView();
-            this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblWaiterName = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnViewDelete = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTables)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,8 +95,9 @@ namespace Kafule
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(109, 30);
             this.btnOrder.TabIndex = 8;
-            this.btnOrder.Text = "Order(F4)";
+            this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnBill
             // 
@@ -100,7 +105,7 @@ namespace Kafule
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(109, 30);
             this.btnBill.TabIndex = 9;
-            this.btnBill.Text = "Bill(F6)";
+            this.btnBill.Text = "Bill";
             this.btnBill.UseVisualStyleBackColor = true;
             // 
             // btnDeleteWaiter
@@ -149,60 +154,6 @@ namespace Kafule
             this.dgvArticles.Size = new System.Drawing.Size(877, 580);
             this.dgvArticles.TabIndex = 14;
             // 
-            // Code
-            // 
-            this.Code.HeaderText = "Code";
-            this.Code.MinimumWidth = 6;
-            this.Code.Name = "Code";
-            this.Code.Width = 150;
-            // 
-            // Article
-            // 
-            this.Article.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Article.HeaderText = "Article name";
-            this.Article.MinimumWidth = 6;
-            this.Article.Name = "Article";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
-            // 
-            // Sum
-            // 
-            this.Sum.HeaderText = "Sum";
-            this.Sum.MinimumWidth = 6;
-            this.Sum.Name = "Sum";
-            this.Sum.Width = 150;
-            // 
-            // dgvTables
-            // 
-            this.dgvTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TableName});
-            this.dgvTables.Location = new System.Drawing.Point(12, 217);
-            this.dgvTables.Name = "dgvTables";
-            this.dgvTables.RowHeadersWidth = 51;
-            this.dgvTables.RowTemplate.Height = 24;
-            this.dgvTables.Size = new System.Drawing.Size(288, 580);
-            this.dgvTables.TabIndex = 13;
-            // 
-            // TableName
-            // 
-            this.TableName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TableName.HeaderText = "Table name";
-            this.TableName.MinimumWidth = 6;
-            this.TableName.Name = "TableName";
-            // 
             // lblWaiterName
             // 
             this.lblWaiterName.AutoSize = true;
@@ -213,15 +164,15 @@ namespace Kafule
             this.lblWaiterName.TabIndex = 15;
             this.lblWaiterName.Text = "WaiterName";
             // 
-            // lblPrice
+            // lblTotal
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(988, 135);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(137, 58);
-            this.lblPrice.TabIndex = 16;
-            this.lblPrice.Text = "Total";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(988, 135);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(137, 58);
+            this.lblTotal.TabIndex = 16;
+            this.lblTotal.Text = "Total";
             // 
             // btnLogout
             // 
@@ -239,9 +190,102 @@ namespace Kafule
             this.btnViewDelete.Name = "btnViewDelete";
             this.btnViewDelete.Size = new System.Drawing.Size(264, 27);
             this.btnViewDelete.TabIndex = 18;
-            this.btnViewDelete.Text = "View/Delete Article";
+            this.btnViewDelete.Text = "View/Delete article";
             this.btnViewDelete.UseVisualStyleBackColor = true;
             this.btnViewDelete.Click += new System.EventHandler(this.btnViewDelete_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnAddTable);
+            this.groupBox1.Controls.Add(this.lbTables);
+            this.groupBox1.Location = new System.Drawing.Point(12, 217);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(288, 580);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tables";
+            // 
+            // btnAddTable
+            // 
+            this.btnAddTable.Location = new System.Drawing.Point(6, 543);
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.Size = new System.Drawing.Size(276, 31);
+            this.btnAddTable.TabIndex = 1;
+            this.btnAddTable.Text = "Add";
+            this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
+            // 
+            // lbTables
+            // 
+            this.lbTables.FormattingEnabled = true;
+            this.lbTables.ItemHeight = 16;
+            this.lbTables.Location = new System.Drawing.Point(6, 21);
+            this.lbTables.Name = "lbTables";
+            this.lbTables.Size = new System.Drawing.Size(276, 516);
+            this.lbTables.TabIndex = 0;
+            this.lbTables.SelectedIndexChanged += new System.EventHandler(this.lbTables_SelectedIndexChanged);
+            // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.Location = new System.Drawing.Point(18, 802);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(276, 31);
+            this.btnDeleteTable.TabIndex = 2;
+            this.btnDeleteTable.Text = "Delete";
+            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
+            // 
+            // btnAddArticle
+            // 
+            this.btnAddArticle.Location = new System.Drawing.Point(907, 803);
+            this.btnAddArticle.Name = "btnAddArticle";
+            this.btnAddArticle.Size = new System.Drawing.Size(276, 31);
+            this.btnAddArticle.TabIndex = 20;
+            this.btnAddArticle.Text = "Add";
+            this.btnAddArticle.UseVisualStyleBackColor = true;
+            this.btnAddArticle.Click += new System.EventHandler(this.btnAddArticle_Click);
+            // 
+            // btnDailyReport
+            // 
+            this.btnDailyReport.Location = new System.Drawing.Point(569, 12);
+            this.btnDailyReport.Name = "btnDailyReport";
+            this.btnDailyReport.Size = new System.Drawing.Size(148, 25);
+            this.btnDailyReport.TabIndex = 21;
+            this.btnDailyReport.Text = "Daily report";
+            this.btnDailyReport.UseVisualStyleBackColor = true;
+            // 
+            // Code
+            // 
+            this.Code.HeaderText = "Code";
+            this.Code.MinimumWidth = 6;
+            this.Code.Name = "Code";
+            this.Code.Width = 50;
+            // 
+            // Article
+            // 
+            this.Article.HeaderText = "Article name";
+            this.Article.MinimumWidth = 6;
+            this.Article.Name = "Article";
+            this.Article.Width = 280;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            // 
+            // Sum
+            // 
+            this.Sum.HeaderText = "Sum";
+            this.Sum.MinimumWidth = 6;
+            this.Sum.Name = "Sum";
+            this.Sum.Width = 125;
             // 
             // pictureBox1
             // 
@@ -259,11 +303,14 @@ namespace Kafule
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1195, 842);
+            this.Controls.Add(this.btnDailyReport);
+            this.Controls.Add(this.btnAddArticle);
+            this.Controls.Add(this.btnDeleteTable);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnViewDelete);
             this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblWaiterName);
-            this.Controls.Add(this.dgvTables);
             this.Controls.Add(this.dgvArticles);
             this.Controls.Add(this.btnAddNewArticle);
             this.Controls.Add(this.btnAllWaiters);
@@ -276,7 +323,7 @@ namespace Kafule
             this.Controls.Add(this.pictureBox1);
             this.Name = "Main";
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTables)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -294,16 +341,20 @@ namespace Kafule
         private System.Windows.Forms.Button btnAllWaiters;
         private System.Windows.Forms.Button btnAddNewArticle;
         private System.Windows.Forms.DataGridView dgvArticles;
+        private System.Windows.Forms.Label lblWaiterName;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnViewDelete;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnAddTable;
+        private System.Windows.Forms.ListBox lbTables;
+        private System.Windows.Forms.Button btnDeleteTable;
+        private System.Windows.Forms.Button btnAddArticle;
+        private System.Windows.Forms.Button btnDailyReport;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn Article;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sum;
-        private System.Windows.Forms.DataGridView dgvTables;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TableName;
-        private System.Windows.Forms.Label lblWaiterName;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnViewDelete;
     }
 }

@@ -13,7 +13,7 @@ namespace Kafule
     public partial class Main : Form
     {
         public static bool admin { get; set; }
-        public bool userLogedIn { get; set; }
+        public User currentUser { get; set; }
 
         public Main()
         {
@@ -30,11 +30,19 @@ namespace Kafule
                 btnViewDelete.Visible = false;
                 btnAddNewArticle.Enabled = false;
                 btnAddNewArticle.Visible = false;
+                btnDeleteTable.Enabled = false;
+                btnDeleteTable.Visible = false;
+                btnDailyReport.Enabled = false;
+                btnDailyReport.Visible = false;
             }
-            userLogedIn = false;
-            lblPrice.Text = "";
+            currentUser = null;
+            lblTotal.Text = "";
             lblWaiterName.Text = "";
             btnLogout.Visible = false;
+            groupBox1.Enabled = false;
+            dgvArticles.Enabled = false;
+            btnDeleteTable.Enabled = false;
+            btnAddArticle.Enabled = false;
         }
 
         private void btnAddNewWaiter_Click(object sender, EventArgs e)
@@ -81,15 +89,16 @@ namespace Kafule
             SavedData savedData = SaveSystem.LoadData();
             if(listWaiters.ShowDialog() == DialogResult.OK)
             {
-                //TODO ispolnija listata so mase od toj kelner
-                User user = savedData.users.Find(u => u.code.Equals(listWaiters.user.code));
-                if (user.tables != null)
+                currentUser = savedData.users.Find(u => u.code.Equals(listWaiters.user.code));
+                if (currentUser.tables != null)
                 {
-                    foreach (Table t in user.tables)
-                    {
-                        DataGridViewRow row = dgvTables.Rows[0].Clone() as DataGridViewRow;
-                        row.Cells["Table"].Value = t.Name;
-                    }
+                    lbTables.DataSource = null;
+                    lbTables.DataSource = currentUser.tables;
+                    btnLogout.Visible = true;
+                    lblWaiterName.Text = "Waiter name: " + currentUser.name;
+                    groupBox1.Enabled = true;
+                    btnDeleteTable.Enabled = true;
+                    btnAddArticle.Enabled = true;
                 }
                 
             }
@@ -119,34 +128,36 @@ namespace Kafule
             if(e.KeyChar == (char)Keys.Enter 
                 && !string.IsNullOrEmpty(txtCode.Text) 
                 && savedData.users.Any(user => user.code.Equals(txtCode.Text))
-                && !userLogedIn)
+                && currentUser == null)
             {
-                User user = savedData.users.Find(u => u.code.Equals(txtCode.Text));
-                if (user.tables != null)
+                currentUser = savedData.users.Find(u => u.code.Equals(txtCode.Text));
+                if (currentUser.tables != null)
                 {
-                    foreach (Table t in user.tables)
-                    {
-                        DataGridViewRow row = dgvTables.Rows[0].Clone() as DataGridViewRow;
-                        row.Cells["Table"].Value = t.Name;
-                    }
+                    lbTables.DataSource = null;
+                    lbTables.DataSource = currentUser.tables;
                 }
-                userLogedIn = true;
                 txtCode.Clear();
                 btnLogout.Visible = true;
-                lblWaiterName.Text = "Waiter name: " + user.name;
+                lblWaiterName.Text = "Waiter name: " + currentUser.name;
+                groupBox1.Enabled = true;
+                btnDeleteTable.Enabled = true;
+                btnAddArticle.Enabled = true;
+                btnAddTable.Focus();
             }
         }
 
         
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            userLogedIn = false;
-            lblPrice.Text = "";
+            currentUser = null;
+            lblTotal.Text = "";
             lblWaiterName.Text = "";
-            dgvArticles.DataSource = null;
-            dgvTables.DataSource = null;
+            dgvArticles.Rows.Clear();
+            lbTables.DataSource = null;
+            groupBox1.Enabled = false;
             btnLogout.Visible = false;
-            userLogedIn = false;    
+            btnDeleteTable.Enabled = false;
+            btnAddArticle.Enabled = false;
             txtCode.Focus();
         }
 
@@ -157,5 +168,170 @@ namespace Kafule
         }
 
         
+
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            AddNewTable ant = new AddNewTable();
+            if(ant.ShowDialog() == DialogResult.OK)
+            {
+                SavedData savedData = SaveSystem.LoadData();
+                if (savedData.users.Find(user => user.code.Equals(currentUser.code)).tables != null)
+                {
+                    if (!savedData.users.Find(user => user.code.Equals(currentUser.code)).tables.Any(t => t.Name.Equals(ant.table.Name)))
+                    {
+                        savedData.users.Find(user => user.code.Equals(currentUser.code)).tables.Add(ant.table);
+                        lbTables.DataSource = null;
+                        lbTables.DataSource = savedData.users.Find(user => user.code.Equals(currentUser.code)).tables;
+                        SaveSystem.SaveData(savedData.admin, savedData.waiter, savedData.users);
+                        btnAddArticle.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You can't add table with same name!");
+                    }
+                }
+                else
+                {
+                    savedData.users.Find(user => user.code.Equals(currentUser.code)).tables = new List<Table>() { ant.table };
+                    lbTables.DataSource = null;
+                    lbTables.DataSource = savedData.users.Find(user => user.code.Equals(currentUser.code)).tables;
+                    SaveSystem.SaveData(savedData.admin, savedData.waiter, savedData.users);
+                    btnAddArticle.Focus();
+                }
+            }
+        }
+
+        private void btnDeleteTable_Click(object sender, EventArgs e)
+        {
+            if(lbTables.SelectedIndex != -1)
+            {
+                SavedData savedData = SaveSystem.LoadData();
+                if(savedData != null)
+                {
+                    Table table = savedData.users
+                        .Find(u => u.code.Equals(currentUser.code))
+                        .tables
+                        .Find(t => t.Name.Equals(((Table)lbTables.SelectedItem).Name));
+                    savedData.users
+                        .Find(u => u.code.Equals(currentUser.code))
+                        .tables
+                        .Remove(table);
+                    lbTables.DataSource = null;
+                    lbTables.DataSource = savedData.users.Find(u => u.code.Equals(currentUser.code)).tables;
+                    SaveSystem.SaveData(savedData.admin, savedData.waiter, savedData.users);
+                }
+            }
+            else
+            {
+                dgvArticles.Rows.Clear();
+            }
+        }
+
+        private void total()
+        {
+            int sum = 0;
+            
+            foreach (DataGridViewRow row in dgvArticles.Rows)
+            {
+                if(row.Cells["Sum"].Value != null)
+                    sum += (int)row.Cells["Sum"].Value;
+            }
+            lblTotal.Text = sum.ToString();
+            
+        }
+
+        private void btnAddArticle_Click(object sender, EventArgs e)
+        {
+            if (lbTables.SelectedIndex != -1)
+            {
+                AddTableArticle ata = new AddTableArticle();
+                SavedData savedData = SaveSystem.LoadData();
+                if (ata.ShowDialog() == DialogResult.OK && savedData != null)
+                {
+                    savedData.users
+                        .Find(u => u.code.Equals(currentUser.code))
+                        .tables
+                        .Find(t => t.Name.Equals(((Table)lbTables.SelectedItem).Name))
+                        .items
+                        .Add(ata.articleItem);
+                    dgvArticles.Rows.Clear();
+                    foreach (var article in savedData.users
+                        .Find(u => u.code.Equals(currentUser.code))
+                        .tables
+                        .Find(t => t.Name.Equals(((Table)lbTables.SelectedItem).Name))
+                        .items)
+                    {
+                        DataGridViewRow row = dgvArticles.Rows[0].Clone() as DataGridViewRow;
+                        row.Cells[0].Value = article.article.Code;
+                        row.Cells[1].Value = article.article.Name;
+                        row.Cells[2].Value = article.quantity;
+                        row.Cells[3].Value = article.article.Price;
+                        row.Cells[4].Value = Convert.ToInt32(article.article.Price) * article.quantity;
+                        dgvArticles.Rows.Add(row);
+                    }
+                    total();
+                    SaveSystem.SaveData(savedData.admin, savedData.waiter, savedData.users);
+                }
+            }
+        }
+
+        private void lbTables_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lbTables.SelectedIndex != -1)
+            {
+                SavedData savedData = SaveSystem.LoadData();
+                if (savedData != null)
+                {
+                    dgvArticles.Rows.Clear();
+                    if (savedData.users.Find(u => u.code.Equals(currentUser.code)).tables != null 
+                        && savedData.users.Find(u => u.code.Equals(currentUser.code)).tables.Find(t => t.Name.Equals(((Table)lbTables.SelectedItem).Name)) != null) 
+                    {
+                        foreach (var article in savedData.users
+                                .Find(u => u.code.Equals(currentUser.code))
+                                .tables
+                                .Find(t => t.Name.Equals(((Table)lbTables.SelectedItem).Name))
+                                .items)
+                        {
+                            DataGridViewRow row = dgvArticles.Rows[0].Clone() as DataGridViewRow;
+                            row.Cells[0].Value = article.article.Code;
+                            row.Cells[1].Value = article.article.Name;
+                            row.Cells[2].Value = article.quantity;
+                            row.Cells[3].Value = article.article.Price;
+                            row.Cells[4].Value = Convert.ToInt32(article.article.Price) * article.quantity;
+                            dgvArticles.Rows.Add(row);
+                        }
+                    }
+                    total();
+                }
+            }
+            else
+            {
+                dgvArticles.DataSource = null;
+                lblTotal.Text = "";
+            }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            SavedData savedData = SaveSystem.LoadData();
+            if(lbTables.SelectedIndex != -1)
+            {
+                Table table = lbTables.SelectedItem as Table;
+                if(table.items.FindAll(item => item.ordered == false).Count > 0)
+                {
+                    Table temp = new Table();
+                    temp.items = new List<ArticleItem>();
+                    temp.items.AddRange(table.items.FindAll(item => item.ordered == false).ToList());
+                    temp.Name = table.Name;
+                    OrderForm order = new OrderForm(temp);
+                    savedData.users
+                        .Find(user => user.code.Equals(currentUser.code))
+                        .tables
+                        .Find(t => t.Name.Equals(table.Name)).items.ForEach(item => item.ordered = true);
+                    SaveSystem.SaveData(savedData.admin, savedData.waiter, savedData.users);
+                    order.ShowDialog();
+                }
+            }
+        }
     }
 }

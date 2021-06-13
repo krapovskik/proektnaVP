@@ -19,7 +19,7 @@ namespace Kafule
 
         public override string ToString()
         {
-            return String.Format("{1}", Name);
+            return String.Format("{0}", Name);
         }
     }
 }
